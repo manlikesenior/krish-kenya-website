@@ -5,20 +5,32 @@ import Image from 'next/image';
 import { Download, FileText, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { BIO_TEXT, PRESS_ASSETS } from '@/lib/constants';
 
+import { sendContactMessage } from '@/app/actions';
+
 const Bio = () => {
     const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
-    const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+    const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-    const handleContactSubmit = (e: React.FormEvent) => {
+    const handleContactSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setFormStatus('sending');
-        // Simulate API call
-        setTimeout(() => {
+
+        const formData = new FormData();
+        formData.append('name', formState.name);
+        formData.append('email', formState.email);
+        formData.append('phone', formState.phone);
+        formData.append('message', formState.message);
+
+        const result = await sendContactMessage(formData);
+
+        if (result.success) {
             setFormStatus('sent');
             setFormState({ name: '', email: '', phone: '', message: '' });
-            // Reset status after 3 seconds
             setTimeout(() => setFormStatus('idle'), 3000);
-        }, 1500);
+        } else {
+            setFormStatus('error');
+            setTimeout(() => setFormStatus('idle'), 3000);
+        }
     };
 
     return (
@@ -183,14 +195,17 @@ const Bio = () => {
                                 </div>
                                 <button
                                     type="submit"
-                                    disabled={formStatus === 'sending' || formStatus === 'sent'}
+                                    disabled={formStatus === 'sending' || formStatus === 'sent' || formStatus === 'error'}
                                     className={`w-full py-4 font-bold tracking-widest flex items-center justify-center gap-2 transition-all duration-300 ${formStatus === 'sent'
                                         ? 'bg-green-600 text-white'
-                                        : 'bg-[#D4AF37] text-black hover:bg-white'
+                                        : formStatus === 'error'
+                                            ? 'bg-red-600 text-white'
+                                            : 'bg-[#D4AF37] text-black hover:bg-white'
                                         }`}
                                 >
                                     {formStatus === 'sending' && 'SENDING...'}
                                     {formStatus === 'sent' && <>MESSAGE SENT <Check size={18} /></>}
+                                    {formStatus === 'error' && <>FAILED. TRY AGAIN</>}
                                     {formStatus === 'idle' && <>SEND MESSAGE <Send size={18} /></>}
                                 </button>
                             </form>

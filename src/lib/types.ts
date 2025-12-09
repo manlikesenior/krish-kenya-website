@@ -1,11 +1,3 @@
-export enum ViewState {
-    HOME = 'HOME',
-    MUSIC = 'MUSIC',
-    EVENTS = 'EVENTS',
-    BIO = 'BIO',
-    ADMIN = 'ADMIN',
-}
-
 export interface Event {
     id: string;
     title: string;
@@ -23,12 +15,6 @@ export interface Track {
     platform: string;
     link: string;
     coverImage: string;
-}
-
-export interface Subscriber {
-    id: string;
-    email: string;
-    date: string;
 }
 
 export interface PressAsset {

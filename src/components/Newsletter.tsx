@@ -1,19 +1,30 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { subscribeToNewsletter } from '@/app/actions';
+import { Loader2, Check, ArrowRight } from 'lucide-react';
 
 const Newsletter = () => {
     const [email, setEmail] = useState('');
-    const [status, setStatus] = useState<'idle' | 'success'>('idle');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (email) {
-            // Here you can add actual subscription logic
-            setStatus('success');
-            setEmail('');
-            setTimeout(() => setStatus('idle'), 3000);
+            setStatus('loading');
+            const formData = new FormData();
+            formData.append('email', email);
+
+            const result = await subscribeToNewsletter(formData);
+
+            if (result.success) {
+                setStatus('success');
+                setEmail('');
+                setTimeout(() => setStatus('idle'), 3000);
+            } else {
+                setStatus('error');
+                setTimeout(() => setStatus('idle'), 3000);
+            }
         }
     };
 
@@ -33,16 +44,17 @@ const Newsletter = () => {
                         placeholder="ENTER YOUR EMAIL"
                         className="flex-grow px-6 py-4 bg-[#0a0a0a]/10 border-2 border-[#0a0a0a]/20 focus:border-[#0a0a0a] focus:outline-none placeholder-[#0a0a0a]/50 text-[#0a0a0a] font-sans"
                         required
+                        disabled={status === 'loading' || status === 'success'}
                     />
                     <button
                         type="submit"
-                        className="px-8 py-4 bg-[#0a0a0a] text-[#D4AF37] font-bold tracking-widest hover:bg-[#0a0a0a]/90 transition-colors flex items-center justify-center gap-2"
+                        disabled={status === 'loading' || status === 'success'}
+                        className="px-8 py-4 bg-[#0a0a0a] text-[#D4AF37] font-bold tracking-widest hover:bg-[#0a0a0a]/90 transition-colors flex items-center justify-center gap-2 min-w-[160px]"
                     >
-                        {status === 'success' ? (
-                            <>SUBSCRIBED <Check size={18} /></>
-                        ) : (
-                            <>SIGN UP <ArrowRight size={18} /></>
-                        )}
+                        {status === 'loading' && <Loader2 size={18} className="animate-spin" />}
+                        {status === 'success' && <>SUBSCRIBED <Check size={18} /></>}
+                        {status === 'error' && <>FAILED. RETRY?</>}
+                        {status === 'idle' && <>SIGN UP <ArrowRight size={18} /></>}
                     </button>
                 </form>
             </div>

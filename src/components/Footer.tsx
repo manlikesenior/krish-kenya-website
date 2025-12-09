@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
 const Footer = () => {
@@ -14,13 +13,6 @@ const Footer = () => {
                     <a href={SOCIAL_LINKS.YOUTUBE} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white text-sm">YOUTUBE</a>
                     <a href={SOCIAL_LINKS.WHATSAPP} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white text-sm">WHATSAPP</a>
                 </div>
-                <Link
-                    href="/admin"
-                    className="text-gray-800 hover:text-[#D4AF37] transition-colors p-2"
-                    title="Admin Access"
-                >
-                    Admin
-                </Link>
             </div>
         </footer>
     );
