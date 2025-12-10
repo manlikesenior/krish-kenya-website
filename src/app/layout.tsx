@@ -3,6 +3,7 @@ import { Inter, Anton } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import RemoveGrammarly from "@/components/RemoveGrammarly";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,10 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${anton.variable} bg-[#0a0a0a] text-gray-200 antialiased`}
+        suppressHydrationWarning
       >
+        <RemoveGrammarly />
         <Navigation />
         <main>{children}</main>
         <Footer />

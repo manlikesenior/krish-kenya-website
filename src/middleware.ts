@@ -1,9 +1,9 @@
 // src/middleware.ts
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({
+  const response = NextResponse.next({
     request: {
       headers: request.headers,
     },
@@ -17,45 +17,28 @@ export async function middleware(request: NextRequest) {
         get(name: string) {
           return request.cookies.get(name)?.value
         },
-        set(name: string, value: string, options: CookieOptions) {
-          request.cookies.set({
-            name,
-            value,
+        set(name: string, value: string, options: any) {
+          response.cookies.set(name, value, {
             ...options,
-          })
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          })
-          response.cookies.set({
-            name,
-            value,
-            ...options,
+            sameSite: 'lax',
+            httpOnly: false, // Required for client-side access
           })
         },
-        remove(name: string, options: CookieOptions) {
-          request.cookies.set({
-            name,
-            value: '',
+        remove(name: string, options: any) {
+          response.cookies.set(name, '', {
             ...options,
-          })
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          })
-          response.cookies.set({
-            name,
-            value: '',
-            ...options,
+            maxAge: 0,
+            sameSite: 'lax',
+            httpOnly: false,
           })
         },
       },
     }
   )
 
+  // This refreshes auth if expired - required for Server Components
   await supabase.auth.getSession()
+
   return response
 }
 

@@ -13,10 +13,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Add this if you need to use Edge Runtime
-  experimental: {
-    serverActions: true,
-  },
 };
 
 export default nextConfig;
