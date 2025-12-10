@@ -1,3 +1,4 @@
+// next.config.ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -11,6 +12,10 @@ const nextConfig: NextConfig = {
         pathname: '/storage/v1/object/public/**',
       },
     ],
+  },
+  // Add this if you need to use Edge Runtime
+  experimental: {
+    serverActions: true,
   },
 };
 
