@@ -15,12 +15,6 @@ export interface Track {
     platform: string;
     link: string;
     coverImage: string;
+    audio_url?: string; // Direct audio file URL for playing on the site
 }
 
-export interface PressAsset {
-    id: string;
-    title: string;
-    type: string;
-    size: string;
-    thumbnail: string;
-}

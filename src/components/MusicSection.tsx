@@ -7,6 +7,7 @@ interface MusicSectionProps {
 }
 
 const MusicSection = ({ tracks }: MusicSectionProps) => {
+
     return (
         <div className="py-20 px-4 max-w-7xl mx-auto">
             <h2 className="font-display text-4xl text-white mb-12 border-l-4 border-[#D4AF37] pl-6">
@@ -23,10 +24,17 @@ const MusicSection = ({ tracks }: MusicSectionProps) => {
                                 alt={track.title}
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                unoptimized
                             />
                             {/* Overlay on hover */}
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                <a href={track.link} className="p-3 bg-[#D4AF37] text-black rounded-full hover:bg-white transition-colors">
+                                <a
+                                    href={track.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-3 bg-[#D4AF37] text-black rounded-full hover:bg-white transition-colors"
+                                    aria-label={`Play ${track.title}`}
+                                >
                                     <PlayCircle size={32} />
                                 </a>
                             </div>

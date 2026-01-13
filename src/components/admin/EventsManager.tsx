@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { Plus, Trash2, Calendar, MapPin, ExternalLink, Loader2 } from 'lucide-react';
-import { Event } from '@/lib/types'; // Note: Type might mismatch DB snake_case
+import { Plus, Trash2, MapPin, ExternalLink } from 'lucide-react';
 
 // Define DB Type locally or extend
 interface DBEvent {
@@ -17,7 +16,7 @@ interface DBEvent {
     ticket_link: string;
 }
 
-export default function EventsManager({ initialEvents }: { initialEvents: any[] }) {
+export default function EventsManager({ initialEvents }: { initialEvents: DBEvent[] }) {
     const [events, setEvents] = useState<DBEvent[]>(initialEvents);
     const [isAdding, setIsAdding] = useState(false);
     const [loading, setLoading] = useState(false);

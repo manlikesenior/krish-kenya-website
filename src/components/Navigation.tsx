@@ -12,9 +12,10 @@ const Navigation = () => {
 
     const navItems = [
         { label: 'HOME', href: '/' },
-        { label: 'MUSIC', href: '/#latest-music' },
-        { label: 'SHOWS', href: '/#tour-dates' },
+        { label: 'MUSIC', href: '/music' },
+        { label: 'EVENTS', href: '/events' },
         { label: 'BIO', href: '/bio' },
+        { label: 'BOOKINGS', href: '/bookings' },
     ];
 
     const isActive = (href: string) => {

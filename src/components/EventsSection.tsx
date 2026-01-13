@@ -12,7 +12,7 @@ const EventsSection = ({ events }: EventsSectionProps) => {
         <div className="py-20 bg-[#1a1a1a]/30">
             <div className="max-w-6xl mx-auto px-4">
                 <h2 className="font-display text-4xl text-white mb-12 text-center tracking-widest">
-                    SHOW DATES
+                    PAST EVENTS
                 </h2>
 
                 <div className="space-y-4">

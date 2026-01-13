@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://krishkenya.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /dashboard/
+Disallow: /login/
+Disallow: /forgot-password/
+Disallow: /auth/
+
+# Allow important pages
+Allow: /
+Allow: /music
+Allow: /events
+Allow: /bio
+Allow: /bookings
+

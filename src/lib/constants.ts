@@ -1,4 +1,4 @@
-import { Event, Track, PressAsset } from './types';
+import { Event, Track } from './types';
 
 export const ARTIST_NAME = "KRISH-KENYA";
 export const TAGLINE = "EAST AFRICA'S UNDERGROUND ELECTRONIC MUSIC DEEJAY";
@@ -45,7 +45,7 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Amapiano',
         platform: 'YouTube',
         link: 'https://www.youtube.com/watch?v=3BWnsWWlfSs',
-        coverImage: '/images/amapiano-mix-2025.jpg'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/amapiano-mix-2025.jpg'
     },
     {
         id: '5',
@@ -53,7 +53,7 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Amapiano',
         platform: 'YouTube',
         link: 'https://www.youtube.com/watch?v=-XYeFb12570',
-        coverImage: '/images/rave-cave-mix.png'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/rave-cave-mix.png'
     },
     {
         id: '6',
@@ -61,7 +61,7 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Afro House',
         platform: 'Spotify',
         link: 'https://open.spotify.com/track/5NNGz4T3uj8dk0epvxyciI?si=977943aae2474082',
-        coverImage: '/images/keep-going.png'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/keep-going.png'
     },
     {
         id: '7',
@@ -69,37 +69,8 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Afro House',
         platform: 'YouTube',
         link: 'https://www.youtube.com/watch?v=h-xZ9SP3CGw',
-        coverImage: '/images/safina-beach-mix.jpg'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/safina-beach-mix.jpg'
     }
 ];
 
-export const PRESS_ASSETS: PressAsset[] = [
-    {
-        id: '1',
-        title: 'DJ Booth at Saltys Beach',
-        type: 'Image (JPG)',
-        size: '4.2 MB',
-        thumbnail: '/images/bio/bio-dj-booth.jpg'
-    },
-    {
-        id: '2',
-        title: 'Outdoor Portrait',
-        type: 'Image (JPG)',
-        size: '3.8 MB',
-        thumbnail: '/images/bio/bio-outdoor.jpg'
-    },
-    {
-        id: '3',
-        title: 'Studio Shot (Green Light)',
-        type: 'Image (JPG)',
-        size: '5.1 MB',
-        thumbnail: '/images/bio/bio-green-hoodie.jpg'
-    },
-    {
-        id: '4',
-        title: 'Studio Portrait (Smile)',
-        type: 'Image (JPG)',
-        size: '3.5 MB',
-        thumbnail: '/images/bio/bio-smile.jpg'
-    }
-];
+

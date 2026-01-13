@@ -1,9 +1,8 @@
 'use client';
-
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { Plus, Trash2, Music, Upload, Eye, ExternalLink } from 'lucide-react';
+import { Plus, Trash2, Upload, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
 interface DBTrack {
@@ -15,7 +14,7 @@ interface DBTrack {
     cover_image: string;
 }
 
-export default function TracksManager({ initialTracks }: { initialTracks: any[] }) {
+export default function TracksManager({ initialTracks }: { initialTracks: DBTrack[] }) {
     const [tracks, setTracks] = useState<DBTrack[]>(initialTracks);
     const [isAdding, setIsAdding] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -38,7 +37,7 @@ export default function TracksManager({ initialTracks }: { initialTracks: any[] 
         setUploading(true);
         const file = e.target.files[0];
         const fileExt = file.name.split('.').pop();
-        const fileName = `${Date.now()}.${fileExt}`;
+        const fileName = `${crypto.randomUUID()}.${fileExt}`;
         const filePath = `tracks/${fileName}`;
 
         const { error: uploadError } = await supabase.storage
@@ -81,7 +80,7 @@ export default function TracksManager({ initialTracks }: { initialTracks: any[] 
         setLoading(false);
     };
 
-    const handleDelete = async (id: string, imageUrl: string) => {
+    const handleDelete = async (id: string) => {
         if (!confirm('Are you sure you want to delete this track?')) return;
 
         // Attempt to delete image first (optional but good practice)
@@ -202,7 +201,7 @@ export default function TracksManager({ initialTracks }: { initialTracks: any[] 
                                     <p className="text-[#D4AF37] text-xs uppercase">{track.genre}</p>
                                 </div>
                                 <button
-                                    onClick={() => handleDelete(track.id, track.cover_image)}
+                                    onClick={() => handleDelete(track.id)}
                                     className="text-gray-600 hover:text-red-500 transition-colors"
                                 >
                                     <Trash2 size={16} />

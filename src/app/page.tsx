@@ -1,9 +1,11 @@
 import Hero from '@/components/Hero';
 import MusicSection from '@/components/MusicSection';
 import EventsSection from '@/components/EventsSection';
-import Newsletter from '@/components/Newsletter';
+import Gallery from '@/components/Gallery';
+import Bookings from '@/components/Bookings';
 import { createClient } from '@/lib/supabase/server';
 import { INITIAL_TRACKS, INITIAL_EVENTS } from '@/lib/constants';
+import { Event, Track } from '@/lib/types';
 
 export default async function Home() {
   const supabase = await createClient();
@@ -23,24 +25,27 @@ export default async function Home() {
     .limit(6);
 
   // Map DB fields to Component Props
-  const dbEvents = eventsData?.map((e: any) => ({
-    ...e,
-    ticketLink: e.ticket_link
-  })) || [];
+  const dbEvents = eventsData?.map((e: any) => {
+    return {
+      ...e,
+      ticketLink: e.ticket_link,
+    } as Event;
+  }) || [];
 
-  const dbTracks = tracksData?.map((t: any) => ({
-    ...t,
-    coverImage: t.cover_image
-  })) || [];
+  const dbTracks = tracksData?.map((t: any) => {
+    return {
+      ...t,
+      coverImage: t.cover_image,
+    } as Track;
+  }) || [];
 
-  // Combine Static and Dynamic Data
-  // We prioritize DB items, but include static items effectively as 'legacy' or 'featured'
-  // You might want to sort the combined array if order matters strictly by date
-  const events = [...dbEvents, ...INITIAL_EVENTS].sort((a, b) =>
-    new Date(a.date).getTime() - new Date(b.date).getTime()
-  );
+  // Use database data, fallback to initial data if database is empty
+  // After running migrate_initial_data.sql, database will have all the data
+  const events = dbEvents.length > 0 
+    ? dbEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    : INITIAL_EVENTS.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-  const tracks = [...dbTracks, ...INITIAL_TRACKS];
+  const tracks = dbTracks.length > 0 ? dbTracks : INITIAL_TRACKS;
 
   return (
     <>
@@ -51,7 +56,8 @@ export default async function Home() {
       <div id="tour-dates">
         <EventsSection events={events} />
       </div>
-      <Newsletter />
+      <Gallery />
+      <Bookings />
     </>
   );
 }

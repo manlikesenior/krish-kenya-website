@@ -13,6 +13,7 @@ const Hero = () => {
                     fill
                     className="object-cover opacity-60"
                     priority
+                    unoptimized
                 />
             </div>
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
@@ -26,7 +27,7 @@ const Hero = () => {
                     {TAGLINE}
                 </p>
                 <Link
-                    href="/bio#contact"
+                    href="/bookings"
                     className="inline-block border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-bold py-4 px-10 text-sm md:text-base tracking-widest transition-all duration-300 uppercase"
                 >
                     Book Now

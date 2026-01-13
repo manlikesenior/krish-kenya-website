@@ -1,40 +1,39 @@
-import Footer from "@/components/Footer";
-import Navigation from "@/components/Navigation";
+import MusicSection from '@/components/MusicSection';
+import { createClient } from '@/lib/supabase/server';
+import { INITIAL_TRACKS } from '@/lib/constants';
+import { Track } from '@/lib/types';
 
-export default function MusicPage() {
+export default async function MusicPage() {
+  const supabase = await createClient();
+
+  // Fetch Tracks
+  const { data: tracksData } = await supabase
+    .from('tracks')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  // Map DB fields to Component Props
+  const dbTracks = tracksData?.map((t: any) => {
+    return {
+      ...t,
+      coverImage: t.cover_image,
+    } as Track;
+  }) || [];
+
+  // Combine Static and Dynamic Data
+  const tracks = [...dbTracks, ...INITIAL_TRACKS];
+
   return (
-    <div className="bg-black text-white">
-      <Navigation />
-      <main className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8 text-center">Music</h1>
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="mb-4">
-            Explore the latest tracks and releases from KRISH-KENYA.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {/* Placeholder for a music track */}
-            <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
-              <h2 className="text-2xl font-semibold mb-2">Track Title 1</h2>
-              <p className="text-gray-400 mb-4">Genre | Release Date</p>
-              <div className="aspect-w-16 aspect-h-9 bg-gray-800 flex items-center justify-center rounded-md mb-4">
-                <p className="text-gray-500">Album Art / Player Placeholder</p>
-              </div>
-              <a href="#" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">Listen Now</a>
-            </div>
-            {/* Placeholder for another music track */}
-            <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
-              <h2 className="text-2xl font-semibold mb-2">Track Title 2</h2>
-              <p className="text-gray-400 mb-4">Genre | Release Date</p>
-              <div className="aspect-w-16 aspect-h-9 bg-gray-800 flex items-center justify-center rounded-md mb-4">
-                <p className="text-gray-500">Album Art / Player Placeholder</p>
-              </div>
-              <a href="#" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">Listen Now</a>
-            </div>
-          </div>
-          <p className="mt-8 text-gray-500">More tracks coming soon!</p>
-        </div>
-      </main>
-      <Footer />
+    <div className="pt-32 pb-20 min-h-screen bg-[#0a0a0a]">
+      <div className="max-w-7xl mx-auto px-4 mb-12">
+        <h1 className="font-display text-5xl md:text-6xl text-white mb-4 border-l-4 border-[#D4AF37] pl-6">
+          MUSIC
+        </h1>
+        <p className="text-gray-400 text-lg mb-12 pl-6 max-w-3xl">
+          Explore the latest tracks and releases from KRISH-KENYA. Stream on your favorite platform.
+        </p>
+      </div>
+      <MusicSection tracks={tracks} />
     </div>
   );
 }
