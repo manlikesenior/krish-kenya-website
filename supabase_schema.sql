@@ -43,6 +43,24 @@ create policy "Allow full access to authenticated users on tracks"
 on tracks for all 
 using (auth.role() = 'authenticated');
 
+create table if not exists mixes (
+    id uuid default gen_random_uuid() primary key,
+    title text not null,
+    platform text not null,
+    link text not null,
+    created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+alter table mixes enable row level security;
+
+create policy "Allow public read access on mixes"
+on mixes for select
+using (true);
+
+create policy "Allow full access to authenticated users on mixes"
+on mixes for all
+using (auth.role() = 'authenticated');
+
 -- Create Storage Bucket for Images if not exists
 insert into storage.buckets (id, name, public) 
 values ('images', 'images', true)
