@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import EventsManager from '@/components/admin/EventsManager';
 import TracksManager from '@/components/admin/TracksManager';
+import MixesManager from '@/components/admin/MixesManager';
 import { redirect } from 'next/navigation';
 
 export default async function DashboardPage() {
@@ -13,6 +14,7 @@ export default async function DashboardPage() {
 
     const { data: events } = await supabase.from('events').select('*').order('date', { ascending: true });
     const { data: tracks } = await supabase.from('tracks').select('*').order('created_at', { ascending: false });
+    const { data: mixes } = await supabase.from('mixes').select('*').order('created_at', { ascending: false });
 
     return (
         <div className="space-y-12">
@@ -29,6 +31,11 @@ export default async function DashboardPage() {
             <section>
                 <h2 className="text-2xl font-display mb-6 text-[#D4AF37] border-b border-white/10 pb-4">Manage Music</h2>
                 <TracksManager initialTracks={tracks || []} />
+            </section>
+
+            <section>
+                <h2 className="text-2xl font-display mb-6 text-[#D4AF37] border-b border-white/10 pb-4">Manage Mixes</h2>
+                <MixesManager initialMixes={mixes || []} />
             </section>
         </div>
     );
