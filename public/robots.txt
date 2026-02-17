@@ -4,16 +4,11 @@ Allow: /
 # Sitemap
 Sitemap: https://krishkenya.com/sitemap.xml
 
-# Disallow admin and private areas
+# Disallow admin, auth, and API routes
 Disallow: /dashboard/
 Disallow: /login/
 Disallow: /forgot-password/
 Disallow: /auth/
+Disallow: /api/
 
-# Allow important pages
-Allow: /
-Allow: /music
-Allow: /events
-Allow: /bio
-Allow: /bookings
 

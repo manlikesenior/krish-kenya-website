@@ -1,21 +1,48 @@
+/**
+ * Constants Configuration
+ * 
+ * Central location for all site-wide constants including:
+ * - Artist information (name, tagline)
+ * - Social media links
+ * - Biography text
+ * - Initial/fallback data for events and tracks
+ * 
+ * @module constants
+ */
+
 import { Event, Track } from './types';
 
+/** Artist display name */
 export const ARTIST_NAME = "KRISH-KENYA";
+
+/** Artist tagline shown in hero section */
 export const TAGLINE = "EAST AFRICA'S UNDERGROUND ELECTRONIC MUSIC DEEJAY";
 
+/** Social media profile URLs */
 export const SOCIAL_LINKS = {
-    INSTAGRAM: 'https://www.instagram.com/official_krishkenya/',
-    SPOTIFY: 'https://open.spotify.com/artist/34pp43gQnruZW1oduhQlFv?si=MgJ-zM2oRJWlABgwpyiudQ&nd=1&dlsi=f4236b45769c4b65',
+    INSTAGRAM: 'https://www.instagram.com/official_krishkenya?igsh=MWZhcjdvejNyc2J2',
+    SPOTIFY: 'https://open.spotify.com/artist/34pp43gQnruZW1oduhQlFv?si=J64b_ZndQ4uMSf3EkHsDLw',
     YOUTUBE: 'https://www.youtube.com/@krish-kenya',
     WHATSAPP: 'https://api.whatsapp.com/send/?phone=254794633685',
-    SOUNDCLOUD: '#'
+    SOUNDCLOUD: 'https://soundcloud.com/krishkenya',
+    FACEBOOK: 'https://www.facebook.com/share/14W9xDEyeNk/',
+    TWITTER: 'https://x.com/krishkenya1',
+    APPLE_MUSIC: 'https://music.apple.com/us/artist/krish-kenya/1793782981',
+    LINKEDIN: 'https://www.linkedin.com/in/krish-kenya',
+    BEATPORT: 'https://www.beatport.com/artist/krish-kenya/1295831'
 };
 
-export const BIO_TEXT = `Mazden Ibrahim Safari, professionally known as KRISH-KENYA, is a Kenyan DJ and music producer. Born in Mbeya, Tanzania, and raised in Kilifi, Kenya, his passion for music was nurtured by the diverse sounds of the coast.
+export const BIO_TEXT = `Mazden Ibrahim, popularly known by his stage name KRISH-KENYA, is a dynamic DJ and Producer known for his electrifying sound rooted in African rhythms. Born in Shinyanga, Mwanza, Tanzania, and raised in Kilifi, Kenya, KRISH-KENYA's musical journey reflects a rich blend of East African culture and modern electronic influence.
 
-With over nine years of experience, KRISH-KENYA has established himself as a prominent figure in East Africa's underground electronic music scene. His unique sound blends Amapiano, 3step, Afro House, and Afro Tech.
+In 2017, he enrolled at a professional DJ Academy where he became a certified DJ, sharpening his technical skills and performance craft. Driven by his passion for music creation, he later advanced his artistry in 2024 by joining SEMA (Santuri East Africa) for Music Production classes, expanding his sound and creative direction.
 
-His performances are characterized by an ability to read the crowd and craft dynamic dance floor journeys, commanding emotional depth and technical skill whether on a beach stage or a packed club in Nairobi.`;
+In 2025, KRISH-KENYA released his debut track titled "FIK'IRI" under SOSHA Records, marking a major milestone in his production career and establishing his presence in the Afro-electronic music scene.
+
+Over the years, KRISH-KENYA has performed at major festivals across Kenya, captivating audiences with his high-energy sets and deep, soulful selections. His sound blends Amapiano, 3 Step, Afro House, and Afro Tech, creating an immersive musical experience that connects dance floors to authentic African vibrations.
+
+In 2025, he launched his own brand, SOUNDAFRIQUE, hosting curated music experiences at The Terrace Art Space, Kilifi. The brand represents his vision of celebrating African electronic music culture while creating platforms for connection, creativity, and community.
+
+KRISH-KENYA continues to rise as one of East Africa's promising DJs and Producers, pushing boundaries and delivering powerful sonic journeys wherever he performs.`;
 
 export const INITIAL_EVENTS: Event[] = [
     {

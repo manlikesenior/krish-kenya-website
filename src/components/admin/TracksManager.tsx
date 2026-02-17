@@ -1,3 +1,15 @@
+/**
+ * TracksManager Component
+ * 
+ * Admin dashboard component for managing music tracks.
+ * Provides CRUD operations for tracks stored in Supabase.
+ * Features: Add tracks, upload cover images, delete tracks.
+ * Cover images are stored in Supabase Storage 'images' bucket.
+ * 
+ * @component
+ * @param {DBTrack[]} initialTracks - Pre-fetched tracks from server component
+ */
+
 'use client';
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -5,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import { Plus, Trash2, Upload, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
+/** Track database schema */
 interface DBTrack {
     id: string;
     title: string;

@@ -1,17 +1,31 @@
+import { Metadata } from 'next';
 import EventsSection from '@/components/EventsSection';
 import InstagramEmbed from '@/components/InstagramEmbed';
 import { createClient } from '@/lib/supabase/server';
 import { INITIAL_EVENTS } from '@/lib/constants';
 import { Event } from '@/lib/types';
 
+export const metadata: Metadata = {
+  title: 'Events',
+  description: 'Upcoming performances and past events by KRISH-KENYA. Get tickets for SOUNDAFRIQUE, AM BEATS, and more live DJ sets across East Africa.',
+  openGraph: {
+    title: 'Events | KRISH-KENYA',
+    description: 'Upcoming performances and past events by KRISH-KENYA. Live DJ sets across East Africa.',
+    type: 'website',
+  },
+  alternates: {
+    canonical: '/events',
+  },
+};
+
 export default async function EventsPage() {
   const supabase = await createClient();
 
-  // Fetch Events
+  // Fetch all Events from database
   const { data: eventsData } = await supabase
     .from('events')
     .select('*')
-    .order('date', { ascending: true });
+    .order('date', { ascending: false });
 
   // Map DB fields to Component Props
   const dbEvents = eventsData?.map((e: any) => {
@@ -21,10 +35,10 @@ export default async function EventsPage() {
     } as Event;
   }) || [];
 
-  // Combine Static and Dynamic Data
-  const events = [...dbEvents, ...INITIAL_EVENTS].sort((a, b) =>
-    new Date(a.date).getTime() - new Date(b.date).getTime()
-  );
+  // Combine database events with initial past events (no duplicates by id)
+  const dbEventIds = new Set(dbEvents.map(e => e.id));
+  const uniqueInitialEvents = INITIAL_EVENTS.filter(e => !dbEventIds.has(e.id));
+  const events = [...dbEvents, ...uniqueInitialEvents];
 
   return (
     <div className="pt-32 pb-20 min-h-screen bg-[#0a0a0a]">

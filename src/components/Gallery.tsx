@@ -1,27 +1,59 @@
+/**
+ * Gallery Component
+ * 
+ * Interactive image gallery carousel with lightbox modal.
+ * Supports infinite scroll navigation and responsive grid display.
+ * 
+ * @component
+ * @param {GalleryImage[]} images - Array of gallery images to display
+ * @example
+ * <Gallery images={galleryImages} />
+ */
+
 'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const galleryImages = [
-    { src: "/images/gallery/bio-dj-booth.jpg", alt: "KRISH-KENYA at the DJ booth", caption: "KRISH-KENYA" },
-    { src: "/images/gallery/bio-green-hoodie.jpg", alt: "KRISH-KENYA in a green hoodie", caption: "KRISH-KENYA" },
-    { src: "/images/gallery/bio-outdoor.jpg", alt: "KRISH-KENYA outdoors", caption: "KRISH-KENYA" },
-    { src: "/images/gallery/bio-smile.jpg", alt: "KRISH-KENYA smiling", caption: "KRISH-KENYA" },
-];
+/** Image data structure for gallery items */
+interface GalleryImage {
+    id?: string;
+    src: string;
+    alt: string;
+    caption: string;
+}
 
-const Gallery = () => {
+interface GalleryProps {
+    images?: GalleryImage[];
+}
+
+const Gallery = ({ images = [] }: GalleryProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
     const visibleCount = 6; // Number of images visible at once
 
+    // If no images, show placeholder
+    if (images.length === 0) {
+        return (
+            <div className="py-20 bg-[#0a0a0a]">
+                <div className="max-w-7xl mx-auto px-4">
+                    <h2 className="font-display text-4xl md:text-5xl text-white mb-12 text-center tracking-widest">
+                        GALLERY
+                    </h2>
+                    <p className="text-gray-500 text-center">No gallery images yet. Check back soon!</p>
+                </div>
+            </div>
+        );
+    }
+
     // Duplicate images for infinite scroll effect
-    const extendedImages = [...galleryImages, ...galleryImages, ...galleryImages];
+    const extendedImages = [...images, ...images, ...images];
 
     const handlePrev = () => {
         setCurrentIndex((prev) => {
             if (prev <= 0) {
-                return galleryImages.length * 2 - 1; // Loop to end
+                return images.length * 2 - 1; // Loop to end
             }
             return prev - 1;
         });
@@ -29,7 +61,7 @@ const Gallery = () => {
 
     const handleNext = () => {
         setCurrentIndex((prev) => {
-            if (prev >= galleryImages.length * 2) {
+            if (prev >= images.length * 2) {
                 return 0; // Loop to start
             }
             return prev + 1;
@@ -67,26 +99,58 @@ const Gallery = () => {
                     <div className="flex gap-4 overflow-hidden px-12">
                         {displayImages.map((image, i) => (
                             <div 
-                                key={`${image.src}-${currentIndex}-${i}`}
-                                className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 transition-transform duration-300"
+                                key={`${image.id || image.src}-${currentIndex}-${i}`}
+                                className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 transition-transform duration-300 cursor-pointer"
+                                onClick={() => setSelectedImage(image)}
                             >
-                                <div className="relative aspect-[4/3] border border-white/10 overflow-hidden bg-[#1a1a1a]">
+                                <div className="relative aspect-[4/3] border border-white/10 overflow-hidden bg-[#1a1a1a] hover:border-[#D4AF37] transition-colors">
                                     <Image
                                         src={image.src}
                                         alt={image.alt}
                                         fill
-                                        className="object-cover"
+                                        className="object-cover hover:scale-105 transition-transform duration-300"
                                         unoptimized
                                     />
                                 </div>
-                                <p className="text-white text-sm mt-2 text-center uppercase tracking-wider">
-                                    {image.caption}
-                                </p>
+                                {image.caption && (
+                                    <p className="text-white text-sm mt-2 text-center uppercase tracking-wider">
+                                        {image.caption}
+                                    </p>
+                                )}
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
+
+            {/* Lightbox Modal */}
+            {selectedImage && (
+                <div 
+                    className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <button
+                        className="absolute top-4 right-4 text-white/70 hover:text-white text-4xl"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        ×
+                    </button>
+                    <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
+                        <Image
+                            src={selectedImage.src}
+                            alt={selectedImage.alt}
+                            fill
+                            className="object-contain"
+                            unoptimized
+                        />
+                    </div>
+                    {selectedImage.caption && (
+                        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-lg tracking-wider">
+                            {selectedImage.caption}
+                        </p>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

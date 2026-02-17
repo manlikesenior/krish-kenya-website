@@ -1,10 +1,21 @@
+/**
+ * Navigation Component
+ * 
+ * Fixed navigation bar with responsive mobile menu.
+ * Features logo, navigation links, and social media icons.
+ * Active route is highlighted with gold accent color.
+ * 
+ * @component
+ */
+
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Instagram, Music, Youtube, MessageCircle } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ARTIST_NAME, SOCIAL_LINKS } from '@/lib/constants';
+import { InstagramIcon, SpotifyIcon, YoutubeIcon, TwitterIcon } from './SocialIcons';
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -57,16 +68,16 @@ const Navigation = () => {
                     {/* Social Icons */}
                     <div className="hidden md:flex items-center space-x-4">
                         <a href={SOCIAL_LINKS.INSTAGRAM} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                            <Instagram size={20} />
+                            <InstagramIcon size={20} />
                         </a>
                         <a href={SOCIAL_LINKS.SPOTIFY} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                            <Music size={20} />
+                            <SpotifyIcon size={20} />
                         </a>
                         <a href={SOCIAL_LINKS.YOUTUBE} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                            <Youtube size={20} />
+                            <YoutubeIcon size={20} />
                         </a>
-                        <a href={SOCIAL_LINKS.WHATSAPP} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                            <MessageCircle size={20} />
+                        <a href={SOCIAL_LINKS.TWITTER} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                            <TwitterIcon size={20} />
                         </a>
                     </div>
 
@@ -99,10 +110,10 @@ const Navigation = () => {
                         ))}
                         {/* Mobile Social Links */}
                         <div className="flex space-x-6 px-3 py-4 border-t border-gray-900 mt-2">
-                            <a href={SOCIAL_LINKS.INSTAGRAM} className="text-gray-400 hover:text-white"><Instagram size={20} /></a>
-                            <a href={SOCIAL_LINKS.SPOTIFY} className="text-gray-400 hover:text-white"><Music size={20} /></a>
-                            <a href={SOCIAL_LINKS.YOUTUBE} className="text-gray-400 hover:text-white"><Youtube size={20} /></a>
-                            <a href={SOCIAL_LINKS.WHATSAPP} className="text-gray-400 hover:text-white"><MessageCircle size={20} /></a>
+                            <a href={SOCIAL_LINKS.INSTAGRAM} className="text-gray-400 hover:text-white"><InstagramIcon size={20} /></a>
+                            <a href={SOCIAL_LINKS.SPOTIFY} className="text-gray-400 hover:text-white"><SpotifyIcon size={20} /></a>
+                            <a href={SOCIAL_LINKS.YOUTUBE} className="text-gray-400 hover:text-white"><YoutubeIcon size={20} /></a>
+                            <a href={SOCIAL_LINKS.TWITTER} className="text-gray-400 hover:text-white"><TwitterIcon size={20} /></a>
                         </div>
                     </div>
                 </div>

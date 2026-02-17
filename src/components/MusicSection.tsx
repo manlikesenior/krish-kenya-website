@@ -1,3 +1,14 @@
+/**
+ * MusicSection Component
+ * 
+ * Displays music tracks in a responsive grid layout.
+ * Each track card shows cover art with hover overlay for play/external links.
+ * Links to YouTube and Spotify for each track.
+ * 
+ * @component
+ * @param {Track[]} tracks - Array of track objects from Supabase
+ */
+
 import Image from 'next/image';
 import { Track } from '@/lib/types';
 import { PlayCircle, ExternalLink } from 'lucide-react';
@@ -24,7 +35,6 @@ const MusicSection = ({ tracks }: MusicSectionProps) => {
                                 alt={track.title}
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                unoptimized
                             />
                             {/* Overlay on hover */}
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">

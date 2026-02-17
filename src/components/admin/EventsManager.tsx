@@ -1,3 +1,14 @@
+/**
+ * EventsManager Component
+ * 
+ * Admin dashboard component for managing events.
+ * Provides CRUD operations for events stored in Supabase.
+ * Features: Add new events, delete existing events, inline form.
+ * 
+ * @component
+ * @param {DBEvent[]} initialEvents - Pre-fetched events from server component
+ */
+
 'use client';
 
 import { useState } from 'react';
@@ -5,7 +16,7 @@ import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { Plus, Trash2, MapPin, ExternalLink } from 'lucide-react';
 
-// Define DB Type locally or extend
+/** Event database schema */
 interface DBEvent {
     id: string;
     title: string;

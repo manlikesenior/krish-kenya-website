@@ -56,21 +56,13 @@ export const metadata: Metadata = {
     siteName: siteName,
     title: `${siteName} | Official Site`,
     description: siteDescription,
-    images: [
-      {
-        url: `${siteUrl}/images/hero-bg.jpg`,
-        width: 1200,
-        height: 630,
-        alt: siteName,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteName} | Official Site`,
     description: siteDescription,
-    images: [`${siteUrl}/images/hero-bg.jpg`],
-    creator: "@official_krishkenya",
+    creator: "@krishkenya1",
+    site: "@krishkenya1",
   },
   robots: {
     index: true,

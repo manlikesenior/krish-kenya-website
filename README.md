@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KRISH-KENYA Official Website
+
+The official website for **KRISH-KENYA** — East Africa's Underground Electronic Pulse. This site showcases the work and passion of KRISH-KENYA, helping to engage with fans and create business opportunities for bookings and collaborations.
+
+## About
+
+This website serves as a central hub for:
+- 🎵 **Music** — Stream the latest Amapiano, Afro House, and Afro Tech tracks
+- 📅 **Events** — Stay updated on upcoming performances and past shows
+- 👤 **Biography** — Learn about the journey from Shinyanga to Kilifi's electronic scene
+- 📧 **Bookings** — Connect for DJ performances, festivals, and private events
+
+## Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org) (App Router)
+- **Database & Storage**: [Supabase](https://supabase.com)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **Deployment**: [Vercel](https://vercel.com)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content Management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Manage events, tracks, and gallery images through the admin dashboard at `/dashboard`.
+See [DASHBOARD_LOGIN_GUIDE.md](./DASHBOARD_LOGIN_GUIDE.md) for access details.
 
-## Learn More
+## Database Setup
 
-To learn more about Next.js, take a look at the following resources:
+See [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md) for database schema setup and initial data migration.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Credits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Artist**: KRISH-KENYA
+- **Built with ❤️ by**: [Noon Studio Africa](https://noonstudio.africa)
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2025-2026 KRISH-KENYA. All rights reserved.

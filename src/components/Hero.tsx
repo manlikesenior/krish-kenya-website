@@ -1,3 +1,14 @@
+/**
+ * Hero Component
+ * 
+ * Full-screen hero section displayed on the homepage.
+ * Features a background image with gradient overlay and call-to-action.
+ * 
+ * @component
+ * @example
+ * <Hero />
+ */
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { TAGLINE } from '@/lib/constants';
@@ -13,7 +24,6 @@ const Hero = () => {
                     fill
                     className="object-cover opacity-60"
                     priority
-                    unoptimized
                 />
             </div>
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/50 to-transparent"></div>

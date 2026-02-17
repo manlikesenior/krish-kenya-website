@@ -1,27 +1,46 @@
+import { Metadata } from 'next';
 import MusicSection from '@/components/MusicSection';
 import { createClient } from '@/lib/supabase/server';
 import { INITIAL_TRACKS } from '@/lib/constants';
 import { Track } from '@/lib/types';
 
+export const metadata: Metadata = {
+  title: 'Music',
+  description: 'Stream KRISH-KENYA\'s latest Amapiano, Afro House, and Afro Tech tracks. Listen to mixes and releases on Spotify, YouTube, and more.',
+  openGraph: {
+    title: 'Music | KRISH-KENYA',
+    description: 'Stream KRISH-KENYA\'s latest Amapiano, Afro House, and Afro Tech tracks.',
+    type: 'music.playlist',
+  },
+  alternates: {
+    canonical: '/music',
+  },
+};
+
 export default async function MusicPage() {
   const supabase = await createClient();
 
-  // Fetch Tracks
+  // Fetch Tracks from Supabase
   const { data: tracksData } = await supabase
     .from('tracks')
     .select('*')
     .order('created_at', { ascending: false });
 
   // Map DB fields to Component Props
+  // cover_image is stored as full URL from TracksManager
   const dbTracks = tracksData?.map((t: any) => {
     return {
-      ...t,
-      coverImage: t.cover_image,
+      id: t.id,
+      title: t.title,
+      genre: t.genre || '',
+      platform: t.platform || 'Spotify',
+      link: t.link || '',
+      coverImage: t.cover_image, // Already a full URL
     } as Track;
   }) || [];
 
-  // Combine Static and Dynamic Data
-  const tracks = [...dbTracks, ...INITIAL_TRACKS];
+  // Use database tracks, fallback to initial if empty
+  const tracks = dbTracks.length > 0 ? dbTracks : INITIAL_TRACKS;
 
   return (
     <div className="pt-32 pb-20 min-h-screen bg-[#0a0a0a]">
