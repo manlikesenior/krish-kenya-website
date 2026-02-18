@@ -42,7 +42,7 @@ const Bookings = () => {
                             <Mail size={24} className="text-black sm:w-7 sm:h-7" />
                         </div>
                         <h3 className="text-white font-bold text-sm sm:text-base uppercase tracking-widest mb-2 sm:mb-3">EMAIL</h3>
-                        <p className="text-white text-xs sm:text-sm font-normal break-all sm:break-normal">BOOKINGS@krishkenya.com</p>
+                        <p className="text-white text-xs sm:text-sm font-normal break-all sm:break-normal">bookings@krishkenya.com</p>
                     </div>
                 </div>
 
