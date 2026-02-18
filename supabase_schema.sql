@@ -17,7 +17,7 @@ create table if not exists tracks (
   genre text not null,
   platform text not null,
   link text not null,
-  cover_image text not null,
+  cover_image text not null, -- Should be the full path to the image in the Supabase storage bucket e.g. /images/tracks/track-name.jpg
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 

@@ -134,3 +134,4 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 
 To log out, use the logout button in the dashboard (if available) or clear your browser cookies.
 
+

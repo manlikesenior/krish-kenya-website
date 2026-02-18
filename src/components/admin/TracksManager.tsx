@@ -25,6 +25,7 @@ interface DBTrack {
     platform: string;
     link: string;
     cover_image: string;
+    type: 'track' | 'mix';
 }
 
 export default function TracksManager({ initialTracks }: { initialTracks: DBTrack[] }) {
@@ -41,7 +42,8 @@ export default function TracksManager({ initialTracks }: { initialTracks: DBTrac
         genre: '',
         platform: 'Spotify',
         link: '',
-        cover_image: ''
+        cover_image: '',
+        type: 'track' as 'track' | 'mix'
     });
 
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,7 +89,7 @@ export default function TracksManager({ initialTracks }: { initialTracks: DBTrac
         } else {
             setTracks([...tracks, data]);
             setIsAdding(false);
-            setFormData({ title: '', genre: '', platform: 'Spotify', link: '', cover_image: '' });
+            setFormData({ title: '', genre: '', platform: 'Spotify', link: '', cover_image: '', type: 'track' });
             router.refresh();
         }
         setLoading(false);
@@ -150,6 +152,14 @@ export default function TracksManager({ initialTracks }: { initialTracks: DBTrac
                             <option value="YouTube">YouTube</option>
                             <option value="SoundCloud">SoundCloud</option>
                             <option value="Apple Music">Apple Music</option>
+                        </select>
+                        <select
+                            className="bg-[#0a0a0a] border border-white/10 p-3 text-white w-full"
+                            value={formData.type}
+                            onChange={e => setFormData({ ...formData, type: e.target.value as 'track' | 'mix' })}
+                        >
+                            <option value="track">Track (Single Release)</option>
+                            <option value="mix">Mix (DJ Set/Compilation)</option>
                         </select>
                         <input
                             placeholder="Stream Link"
@@ -221,6 +231,7 @@ export default function TracksManager({ initialTracks }: { initialTracks: DBTrac
                                 </button>
                             </div>
                             <div className="mt-2 flex items-center gap-2 text-xs text-gray-500">
+                                <span className="bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded text-[10px] uppercase">{track.type || 'track'}</span>
                                 <span>{track.platform}</span>
                                 {track.link && (
                                     <a href={track.link} target="_blank" className="hover:text-white"><ExternalLink size={10} /></a>

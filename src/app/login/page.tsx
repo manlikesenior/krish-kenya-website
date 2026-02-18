@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { createClient, getStorageUrl } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { Lock, Mail, Loader2, AlertCircle } from 'lucide-react';
 import Image from 'next/image';
@@ -38,7 +38,7 @@ export default function LoginPage() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0 opacity-30">
                 <Image
-                    src="/images/hero-bg.jpg"
+                    src={getStorageUrl('hero-bg.jpg')}
                     alt="Background"
                     fill
                     className="object-cover"

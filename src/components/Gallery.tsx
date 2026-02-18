@@ -36,9 +36,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
     // If no images, show placeholder
     if (images.length === 0) {
         return (
-            <div className="py-20 bg-[#0a0a0a]">
+            <div className="py-12 sm:py-20 bg-[#0a0a0a]">
                 <div className="max-w-7xl mx-auto px-4">
-                    <h2 className="font-display text-4xl md:text-5xl text-white mb-12 text-center tracking-widest">
+                    <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-8 sm:mb-12 text-center tracking-widest">
                         GALLERY
                     </h2>
                     <p className="text-gray-500 text-center">No gallery images yet. Check back soon!</p>
@@ -71,9 +71,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
     const displayImages = extendedImages.slice(currentIndex, currentIndex + visibleCount);
 
     return (
-        <div className="py-20 bg-[#0a0a0a]">
+        <div className="py-12 sm:py-20 bg-[#0a0a0a]">
             <div className="max-w-7xl mx-auto px-4">
-                <h2 className="font-display text-4xl md:text-5xl text-white mb-12 text-center tracking-widest">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-8 sm:mb-12 text-center tracking-widest">
                     GALLERY
                 </h2>
                 
@@ -81,22 +81,22 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                     {/* Navigation Arrows - Always visible */}
                     <button
                         onClick={handlePrev}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all backdrop-blur-sm"
+                        className="absolute -left-1 sm:left-0 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 text-white p-2 sm:p-3 rounded-full transition-all backdrop-blur-sm"
                         aria-label="Previous images"
                     >
-                        <ChevronLeft size={20} />
+                        <ChevronLeft size={16} className="sm:w-5 sm:h-5" />
                     </button>
                     
                     <button
                         onClick={handleNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all backdrop-blur-sm"
+                        className="absolute -right-1 sm:right-0 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 text-white p-2 sm:p-3 rounded-full transition-all backdrop-blur-sm"
                         aria-label="Next images"
                     >
-                        <ChevronRight size={20} />
+                        <ChevronRight size={16} className="sm:w-5 sm:h-5" />
                     </button>
 
                     {/* Image Carousel */}
-                    <div className="flex gap-4 overflow-hidden px-12">
+                    <div className="flex gap-3 sm:gap-4 overflow-hidden px-8 sm:px-12">
                         {displayImages.map((image, i) => (
                             <div 
                                 key={`${image.id || image.src}-${currentIndex}-${i}`}
@@ -113,7 +113,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                                     />
                                 </div>
                                 {image.caption && (
-                                    <p className="text-white text-sm mt-2 text-center uppercase tracking-wider">
+                                    <p className="text-white text-xs sm:text-sm mt-2 text-center uppercase tracking-wider line-clamp-1">
                                         {image.caption}
                                     </p>
                                 )}
@@ -145,7 +145,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                         />
                     </div>
                     {selectedImage.caption && (
-                        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-lg tracking-wider">
+                        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg tracking-wider text-center max-w-xs sm:max-w-none">
                             {selectedImage.caption}
                         </p>
                     )}

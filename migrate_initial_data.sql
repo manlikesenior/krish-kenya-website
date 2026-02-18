@@ -30,28 +30,28 @@ VALUES
         'Amapiano',
         'YouTube',
         'https://www.youtube.com/watch?v=3BWnsWWlfSs',
-        '/images/amapiano-mix-2025.jpg'
+        '/images/tracks/amapiano-mix-2025.jpg'
     ),
     (
         'Rave Cave Mix',
         'Amapiano',
         'YouTube',
         'https://www.youtube.com/watch?v=-XYeFb12570',
-        '/images/rave-cave-mix.png'
+        '/images/tracks/rave-cave-mix.png'
     ),
     (
         'Keep Going',
         'Afro House',
         'Spotify',
         'https://open.spotify.com/track/5NNGz4T3uj8dk0epvxyciI?si=977943aae2474082',
-        '/images/keep-going.png'
+        '/images/tracks/keep-going.png'
     ),
     (
         'Safina Beach Mix',
         'Afro House',
         'YouTube',
         'https://www.youtube.com/watch?v=h-xZ9SP3CGw',
-        '/images/safina-beach-mix.jpg'
+        '/images/tracks/safina-beach-mix.jpg'
     )
 ON CONFLICT DO NOTHING;
 

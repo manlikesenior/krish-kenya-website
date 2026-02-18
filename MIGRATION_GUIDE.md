@@ -28,6 +28,7 @@ This guide will help you migrate the current music and events from the codebase 
    - Go to **Table Editor** in Supabase
    - Check the `events` table - you should see 2 events
    - Check the `tracks` table - you should see 4 tracks
+   - **Note on `cover_image` path**: Ensure the `cover_image` column in the `tracks` table contains the full path to the image in the Supabase storage bucket (e.g., `/images/tracks/track-name.jpg`).
 
 ## Step 3: Verify Site Display
 
@@ -93,4 +94,5 @@ After migration:
 4. ✅ All new content will follow the current theme/design
 
 You can now manage all events and tracks through the admin dashboard at `/dashboard`!
+
 

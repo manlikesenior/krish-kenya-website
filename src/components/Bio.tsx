@@ -42,8 +42,8 @@ const Bio = () => {
     }, [supabase]);
 
     return (
-        <div className="pt-32 pb-20">
-            <div className="max-w-4xl mx-auto px-6">
+        <div className="pt-24 sm:pt-32 pb-12 sm:pb-20">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
                 {/* Main Bio Image - DJ Smiling */}
                 <div className="mb-12 relative group">
@@ -61,13 +61,13 @@ const Bio = () => {
                 </div>
 
                 {/* Bio Text */}
-                <div className="mb-20">
-                    <h2 className="font-display text-5xl md:text-6xl text-white mb-8 border-b border-[#D4AF37]/30 pb-4 inline-block">
+                <div className="mb-12 sm:mb-20">
+                    <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 sm:mb-8 border-b border-[#D4AF37]/30 pb-3 sm:pb-4 inline-block">
                         ABOUT KRISH-KENYA
                     </h2>
                     <div className="prose prose-invert prose-lg text-gray-300 max-w-none">
                         {BIO_TEXT.split('\n\n').map((paragraph, i) => (
-                            <p key={i} className="mb-6 leading-relaxed font-light text-xl">
+                            <p key={i} className="mb-4 sm:mb-6 leading-relaxed font-light text-base sm:text-lg md:text-xl">
                                 {paragraph}
                             </p>
                         ))}
@@ -75,8 +75,8 @@ const Bio = () => {
                 </div>
 
                 {/* Social Links Section */}
-                <div className="mb-20">
-                    <h2 className="font-display text-5xl md:text-6xl text-white mb-8 border-b border-[#D4AF37]/30 pb-4 inline-block">
+                <div className="mb-12 sm:mb-20">
+                    <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 sm:mb-8 border-b border-[#D4AF37]/30 pb-3 sm:pb-4 inline-block">
                         CONNECT
                     </h2>
                     <div className="bg-black py-12 rounded-sm">
@@ -85,8 +85,8 @@ const Bio = () => {
                 </div>
 
                 {/* Gallery Section */}
-                <div className="mb-20">
-                    <h2 className="font-display text-5xl md:text-6xl text-white mb-8 border-b border-[#D4AF37]/30 pb-4 inline-block">
+                <div className="mb-12 sm:mb-20">
+                    <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 sm:mb-8 border-b border-[#D4AF37]/30 pb-3 sm:pb-4 inline-block">
                         GALLERY
                     </h2>
                     {galleryImages.length === 0 ? (

@@ -72,7 +72,8 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Amapiano',
         platform: 'YouTube',
         link: 'https://www.youtube.com/watch?v=3BWnsWWlfSs',
-        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/amapiano-mix-2025.jpg'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/amapiano-mix-2025.jpg',
+        type: 'mix'
     },
     {
         id: '5',
@@ -80,7 +81,8 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Amapiano',
         platform: 'YouTube',
         link: 'https://www.youtube.com/watch?v=-XYeFb12570',
-        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/rave-cave-mix.png'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/rave-cave-mix.png',
+        type: 'mix'
     },
     {
         id: '6',
@@ -88,7 +90,8 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Afro House',
         platform: 'Spotify',
         link: 'https://open.spotify.com/track/5NNGz4T3uj8dk0epvxyciI?si=977943aae2474082',
-        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/keep-going.png'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/keep-going.png',
+        type: 'track'
     },
     {
         id: '7',
@@ -96,7 +99,8 @@ export const INITIAL_TRACKS: Track[] = [
         genre: 'Afro House',
         platform: 'YouTube',
         link: 'https://www.youtube.com/watch?v=h-xZ9SP3CGw',
-        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/safina-beach-mix.jpg'
+        coverImage: 'https://qlbpliuyqlguhwhmfyxq.supabase.co/storage/v1/object/public/images/tracks/safina-beach-mix.jpg',
+        type: 'mix'
     }
 ];
 

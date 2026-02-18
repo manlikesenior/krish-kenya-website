@@ -16,5 +16,6 @@ export interface Track {
     link: string;
     coverImage: string;
     audio_url?: string; // Direct audio file URL for playing on the site
+    type: 'track' | 'mix'; // Type of music: track (single release) or mix (DJ set/compilation)
 }
 

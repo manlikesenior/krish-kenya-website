@@ -10,12 +10,11 @@ import { Event, Track } from '@/lib/types';
 export default async function Home() {
   const supabase = await createClient();
 
-  // Fetch Events
+  // Fetch all Events from database
   const { data: eventsData } = await supabase
     .from('events')
     .select('*')
-    .gte('date', new Date().toISOString().split('T')[0]) // Simple date check
-    .order('date', { ascending: true });
+    .order('date', { ascending: false });
 
   // Fetch Tracks
   const { data: tracksData } = await supabase
@@ -23,6 +22,12 @@ export default async function Home() {
     .select('*')
     .order('created_at', { ascending: false })
     .limit(6);
+
+  // Fetch Gallery Images
+  const { data: galleryData } = await supabase
+    .from('gallery_images')
+    .select('*')
+    .order('sort_order', { ascending: true });
 
   // Map DB fields to Component Props
   const dbEvents = eventsData?.map((e: any) => {
@@ -32,31 +37,47 @@ export default async function Home() {
     } as Event;
   }) || [];
 
-  const dbTracks = tracksData?.map((t: any) => {
+  const allMusic = tracksData?.map((t: any) => {
     return {
-      ...t,
-      coverImage: t.cover_image,
+      id: t.id,
+      title: t.title,
+      genre: t.genre || '',
+      platform: t.platform || 'Spotify',
+      link: t.link || '',
+      coverImage: t.cover_image, // Full URL from storage
+      type: t.type || 'track', // Default to 'track' if not set
     } as Track;
   }) || [];
 
-  // Use database data, fallback to initial data if database is empty
-  // After running migrate_initial_data.sql, database will have all the data
-  const events = dbEvents.length > 0 
-    ? dbEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    : INITIAL_EVENTS.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  // Combine database events with initial past events (no duplicates by id)
+  const dbEventIds = new Set(dbEvents.map(e => e.id));
+  const uniqueInitialEvents = INITIAL_EVENTS.filter(e => !dbEventIds.has(e.id));
+  const events = [...dbEvents, ...uniqueInitialEvents];
 
-  const tracks = dbTracks.length > 0 ? dbTracks : INITIAL_TRACKS;
+  const musicData = allMusic.length > 0 ? allMusic : INITIAL_TRACKS;
+  
+  // Separate tracks and mixes
+  const tracks = musicData.filter(item => item.type === 'track');
+  const mixes = musicData.filter(item => item.type === 'mix');
+
+  // Map gallery images
+  const galleryImages = galleryData?.map((img: any) => ({
+    id: img.id,
+    src: img.image_url,
+    alt: img.title || 'Gallery image',
+    caption: img.title || '',
+  })) || [];
 
   return (
     <>
       <Hero />
       <div id="latest-music">
-        <MusicSection tracks={tracks} />
+        <MusicSection tracks={tracks} mixes={mixes} />
       </div>
       <div id="tour-dates">
         <EventsSection events={events} />
       </div>
-      <Gallery />
+      <Gallery images={galleryImages} />
       <Bookings />
     </>
   );

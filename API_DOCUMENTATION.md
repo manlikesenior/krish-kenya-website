@@ -150,7 +150,7 @@ GET /api/tracks?genre=Amapiano&limit=5
       "genre": "Amapiano",
       "platform": "Spotify",
       "link": "https://spotify.com/track",
-      "cover_image": "https://example.com/cover.jpg",
+      "cover_image": "/images/tracks/cover.jpg",
       "created_at": "2024-01-01T00:00:00Z"
     }
   ]
@@ -187,7 +187,7 @@ Authorization: Bearer <token>
   "genre": "Amapiano",
   "platform": "Spotify",
   "link": "https://spotify.com/track",
-  "cover_image": "https://example.com/cover.jpg"
+  "cover_image": "/images/tracks/cover.jpg"
 }
 ```
 
@@ -338,4 +338,5 @@ The API uses Supabase with the following table structures:
 - Public read access is allowed for all users
 - Write operations (create, update, delete) require authentication
 - Authentication is handled via Supabase Auth
+
 
