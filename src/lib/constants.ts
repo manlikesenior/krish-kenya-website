@@ -29,7 +29,7 @@ export const SOCIAL_LINKS = {
     BEATPORT: 'https://www.beatport.com/artist/krish-kenya/1295831'
 };
 
-export const BIO_TEXT = `Mazden Ibrahim, popularly known by his stage name KRISH-KENYA, is a dynamic DJ and Producer known for his electrifying sound rooted in African rhythms. Born in Shinyanga, Mwanza, Tanzania, and raised in Kilifi, Kenya, KRISH-KENYA's musical journey reflects a rich blend of East African culture and modern electronic influence.
+export const BIO_TEXT = `Mazden Ibrahim, popularly known by his stage name KRISH-KENYA, is a dynamic DJ and Producer known for his electrifying sound rooted in African rhythms. Born in Shinyanga, Mbeya, Tanzania, and raised in Kilifi, Kenya, KRISH-KENYA's musical journey reflects a rich blend of East African culture and modern electronic influence.
 
 In 2017, he enrolled at a professional DJ Academy where he became a certified DJ, sharpening his technical skills and performance craft. Driven by his passion for music creation, he later advanced his artistry in 2024 by joining SEMA (Santuri East Africa) for Music Production classes, expanding his sound and creative direction.
 
