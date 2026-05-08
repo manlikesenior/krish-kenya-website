@@ -15,9 +15,6 @@ import { Event, Track } from './types';
 /** Artist display name */
 export const ARTIST_NAME = "KRISH-KENYA";
 
-/** Artist tagline shown in hero section */
-export const TAGLINE = "EAST AFRICA'S UNDERGROUND ELECTRONIC MUSIC DEEJAY";
-
 /** Social media profile URLs */
 export const SOCIAL_LINKS = {
     INSTAGRAM: 'https://www.instagram.com/official_krishkenya?igsh=MWZhcjdvejNyc2J2',

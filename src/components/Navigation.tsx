@@ -25,6 +25,7 @@ const Navigation = () => {
         { label: 'HOME', href: '/' },
         { label: 'MUSIC', href: '/music' },
         { label: 'EVENTS', href: '/events' },
+        { label: 'BLOG', href: '/blog' },
         { label: 'BIO', href: '/bio' },
         { label: 'BOOKINGS', href: '/bookings' },
     ];

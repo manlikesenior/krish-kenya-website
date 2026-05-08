@@ -1,4 +1,5 @@
 import { SOCIAL_LINKS } from '@/lib/constants';
+import Link from 'next/link';
 import SocialIcons from './SocialIcons';
 
 /**
@@ -18,6 +19,7 @@ const Footer = () => {
                 
                 {/* Social Platform Text Links */}
                 <div className="flex flex-wrap justify-center items-center gap-6">
+                    <Link href="/blog" className="text-gray-500 hover:text-white text-sm transition-colors">BLOG</Link>
                     <a href={SOCIAL_LINKS.INSTAGRAM} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white text-sm transition-colors">INSTAGRAM</a>
                     <a href={SOCIAL_LINKS.SPOTIFY} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white text-sm transition-colors">SPOTIFY</a>
                     <a href={SOCIAL_LINKS.YOUTUBE} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white text-sm transition-colors">YOUTUBE</a>

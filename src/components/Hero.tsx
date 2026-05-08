@@ -11,7 +11,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { TAGLINE } from '@/lib/constants';
 
 const Hero = () => {
     return (
@@ -33,12 +32,9 @@ const Hero = () => {
                 <h1 className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl text-white tracking-widest mb-3 sm:mb-4 drop-shadow-2xl">
                     KRISH-KENYA
                 </h1>
-                <p className="font-sans text-[#D4AF37] text-sm sm:text-lg md:text-xl lg:text-2xl tracking-[0.15em] sm:tracking-[0.3em] uppercase mb-8 sm:mb-12">
-                    {TAGLINE}
-                </p>
                 <Link
                     href="/bookings"
-                    className="inline-block border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-bold py-3 px-6 sm:py-4 sm:px-10 text-xs sm:text-sm md:text-base tracking-widest transition-all duration-300 uppercase"
+                    className="inline-block mt-4 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-bold py-3 px-6 sm:py-4 sm:px-10 text-xs sm:text-sm md:text-base tracking-widest transition-all duration-300 uppercase"
                 >
                     Book Now
                 </Link>

@@ -57,51 +57,61 @@ body {
   pointer-events: none;
 }
 
-.ProseMirror h1 {
+.ProseMirror h1,
+.blog-content h1 {
   font-size: 2rem;
   font-weight: bold;
   margin: 1.5rem 0 1rem;
   color: white;
 }
 
-.ProseMirror h2 {
+.ProseMirror h2,
+.blog-content h2 {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 1.25rem 0 0.75rem;
   color: white;
 }
 
-.ProseMirror h3 {
+.ProseMirror h3,
+.blog-content h3 {
   font-size: 1.25rem;
   font-weight: bold;
   margin: 1rem 0 0.5rem;
   color: white;
 }
 
-.ProseMirror p {
+.ProseMirror p,
+.blog-content p {
   margin: 0.75rem 0;
   line-height: 1.7;
 }
 
 .ProseMirror ul,
-.ProseMirror ol {
+.blog-content ul,
+.ProseMirror ol,
+.blog-content ol {
   margin: 1rem 0;
   padding-left: 1.5rem;
 }
 
-.ProseMirror li {
+.ProseMirror li,
+.blog-content li {
   margin: 0.25rem 0;
 }
 
-.ProseMirror ul {
+.ProseMirror ul,
+.blog-content ul {
   list-style-type: disc;
 }
 
-.ProseMirror ol {
+.ProseMirror ol,
+.blog-content ol {
   list-style-type: decimal;
 }
 
-.ProseMirror blockquote {
+.ProseMirror blockquote,
+.blog-content blockquote {
   border-left: 3px solid #D4AF37;
   margin: 1.5rem 0;
   padding: 0.5rem 0 0.5rem 1rem;
@@ -109,36 +119,42 @@ body {
   font-style: italic;
 }
 
-.ProseMirror a {
+.ProseMirror a,
+.blog-content a {
   color: #D4AF37;
   text-decoration: underline;
 }
 
-.ProseMirror a:hover {
+.ProseMirror a:hover,
+.blog-content a:hover {
   color: white;
 }
 
-.ProseMirror img {
+.ProseMirror img,
+.blog-content img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
   margin: 1rem 0;
 }
 
-.ProseMirror iframe {
+.ProseMirror iframe,
+.blog-content iframe {
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
   margin: 1rem 0;
 }
 
-.ProseMirror hr {
+.ProseMirror hr,
+.blog-content hr {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin: 2rem 0;
 }
 
-.ProseMirror code {
+.ProseMirror code,
+.blog-content code {
   background: rgba(255, 255, 255, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
@@ -146,7 +162,8 @@ body {
   font-size: 0.9em;
 }
 
-.ProseMirror pre {
+.ProseMirror pre,
+.blog-content pre {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   padding: 1rem;
@@ -154,7 +171,8 @@ body {
   margin: 1rem 0;
 }
 
-.ProseMirror pre code {
+.ProseMirror pre code,
+.blog-content pre code {
   background: none;
   padding: 0;
 }

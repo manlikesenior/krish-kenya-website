@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Plus, Trash2, Upload, Eye, EyeOff, Edit2, X } from 'lucide-react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 // Dynamically import the rich text editor to avoid SSR issues
 const RichTextEditor = dynamic(() => import('./RichTextEditor'), { 
@@ -295,9 +296,18 @@ export default function BlogsManager({ initialBlogs }: { initialBlogs: DBBlog[] 
                                         </span>
                                     </div>
                                     <p className="text-gray-500 text-sm truncate">{blog.excerpt}</p>
-                                    <p className="text-gray-600 text-xs mt-1">/{blog.slug}</p>
+                                    <p className="text-gray-600 text-xs mt-1">/blog/{blog.slug}</p>
                                 </div>
                                 <div className="flex items-center gap-2">
+                                    {blog.published && (
+                                        <Link
+                                            href={`/blog/${blog.slug}`}
+                                            target="_blank"
+                                            className="text-gray-500 hover:text-white transition-colors p-1 text-xs uppercase tracking-widest"
+                                        >
+                                            View
+                                        </Link>
+                                    )}
                                     <button
                                         onClick={() => togglePublish(blog)}
                                         className="text-gray-500 hover:text-[#D4AF37] transition-colors p-1"
